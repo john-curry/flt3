@@ -7,6 +7,8 @@
 #include "graphic_element_visitor.h"
 #include "picture_element.h"
 #include "message_element.h"
+#include "selection_element.h"
+#include "dialog_element.h"
 #include "entity.h"
 class graphic_renderer : public graphic_element_visitor {
   public:
@@ -14,6 +16,8 @@ class graphic_renderer : public graphic_element_visitor {
     void visit(message_element*) override;
     void visit(picture_element*) override;
     void visit(entity*         ) override;
+    void visit(selection_element *) override;
+    void visit(dialog_element*) override;
   private:
     std::shared_ptr<SDL_Surface> screen;
 };

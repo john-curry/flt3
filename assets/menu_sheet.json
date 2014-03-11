@@ -1,0 +1,30 @@
+{
+  "encoding" : "UTF-8",
+  "version"  : 1,
+  "content"  : [
+    {
+      "id"        : "message",
+      "message"   : "What a Funny Little Thing",
+      "font"      : "Minecrafter_3.ttf",
+      "fontsize"  : 15,
+      "x"         : 1,
+      "y"         : 0
+    },
+    {
+      "id"        : "message",
+      "message"   : "What a Funny Little Thing guckfjdskla",
+      "font"      : "Minecrafter_3.ttf",
+      "fontsize"  : 25,
+      "x"         : 1,
+      "y"         : 400
+    },
+    {
+      "id"      : "picture",
+      "file"    : "pic.png",
+      "x"       : 100,
+      "y"       : 100,
+      "w"       : 200,
+      "h"       : 300
+    }
+  ]
+}

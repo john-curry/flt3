@@ -5,6 +5,8 @@ struct graphic_logger : public graphic_element_visitor {
   void visit(picture_element*) override;
   void visit(message_element*) override;
   void visit(entity*)          override;
+  void visit(selection_element*) override;
+  void visit(dialog_element*) override;
 };
 #endif
 

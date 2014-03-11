@@ -1,0 +1,9 @@
+{
+  "encoding"     : "UTF-8",
+  "version"      : 1, 
+  "assetsheet"   : "title_view.json",
+  "events"       : {
+    "next_state"   : { "new_game", "selection" }
+  },
+  "next_state"   : "world_state_test"
+}

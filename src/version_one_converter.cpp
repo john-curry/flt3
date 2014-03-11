@@ -1,11 +1,18 @@
 #include "json_converter.h"
 #include "version_one_converter.h"
+#include <vector>
 std::shared_ptr<graphic_element> version_one_converter::make_element(std::string type, Json::Value v) {
   if (type == "picture") {
     return make_picture(type, v);
   }
   if (type == "message") {
     return make_message(type, v);
+  }
+  if (type == "dialog") {
+    return make_dialog(type, v);
+  }
+  if (type == "selection") {
+    return make_selection(type, v);
   }
   throw std::runtime_error("graphic element: " + type + " not supported in this converter version");
 }
@@ -30,3 +37,31 @@ std::shared_ptr<graphic_element> version_one_converter::make_message(std::string
 }
 
 
+std::shared_ptr<graphic_element> version_one_converter::make_selection(std::string field, Json::Value v) {
+  std::string name = v["name"].asString();
+  std::string font = v["font"].asString();
+  int x = v["x"].asInt();
+  int y = v["y"].asInt();
+  int fontsize = v["fontsize"].asInt();
+  std::vector<std::string> options;
+  for (auto o = v["options"].begin(); 
+       o != v["options"].end(); ++o) {
+    options.push_back((*o).asString());
+  }
+  return std::make_shared<selection_element>(name, options, x, y, fontsize);  
+}
+
+
+
+std::shared_ptr<graphic_element> version_one_converter::make_dialog(std::string field, Json::Value v) {
+  int x = v["x"].asInt();
+  int y = v["y"].asInt();
+  int fontsize = v["fontsize"].asInt();
+  std::string font = v["font"].asString();
+  std::vector<std::string> t_block;;
+  for (auto o = v["dialog"].begin(); 
+       o != v["dialog"].end(); ++o) {
+    t_block.push_back((*o).asString());
+  }
+  return std::make_shared<dialog_element>(t_block, x, y, font, fontsize);
+}

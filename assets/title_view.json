@@ -11,12 +11,44 @@
       "y"         : 0
     },
     {
+      "id"        : "selection",
+      "name"      : "unique identifier",
+      "font"      : "Minecrafter_3.ttf",
+      "fontsize"  : 35,
+      "x"         : 1,
+      "y"         : 0,
+      "options"   : [
+        "new_game", "load_game"
+      ]
+    },
+    {
       "id"        : "message",
       "message"   : "What a Funny Little Thing guckfjdskla",
       "font"      : "Minecrafter_3.ttf",
       "fontsize"  : 25,
       "x"         : 1,
       "y"         : 400
+    },
+    {
+      "id"        : "selection",
+      "name"      : "uid",
+      "font"      : "Minecrafter_3.ttf",
+      "fontsize"  : 25,
+      "x"         : 250,
+      "y"         : 250,
+      "options"     : [
+        "new_game", "load_game"
+      ]
+    },
+    {
+      "id"        : "dialog",
+      "font"      : "Minecrafter_3.ttf",
+      "fontsize"  : 25,
+      "x"         : 0,
+      "y"         : 400,
+      "options"     : [
+        "welcome to a funny little thing", "this is a game made of sauce"
+      ]
     },
     {
       "id"      : "picture",
