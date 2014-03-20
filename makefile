@@ -1,11 +1,10 @@
 # compiler
 CC=g++
 # compiler flags
-CFLAGS=-std=c++11 -Wall -g -o
+CFLAGS=-std=c++11 -Wall -Wextra -pedantic -g -o
 # libraries used in this project
 LIBS=-Iinclude $(shell pkg-config --libs --cflags sdl SDL_image SDL_ttf jsoncpp)
-OBJECTS=main.o event.o event_listener.o graphic_logger.o graphic_renderer.o picture_element.o message_element.o \
-  assetsheet.o version_one_converter.o 
+OBJECTS=main.o helper.o sdl_utility.o logger.o event.o event_listener.o graphic_logger.o graphic_renderer.o picture_element.o message_element.o assetsheet.o version_one_converter.o 
 
 BUILDOBJECTS=$(addprefix build/,$(OBJECTS))
 

@@ -3,7 +3,6 @@
 #include "message_element.h"
 #include "entity.h"
 void graphic_mover::visit(picture_element * g) {
-  g->x += 2;
 }
 void graphic_mover::visit(message_element * g) {
 }

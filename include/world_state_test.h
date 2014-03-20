@@ -8,6 +8,8 @@
 #include "assetsheet.h"
 #include "event_listener.h"
 #include "events.h"
+#include "logger.h"
+#include "helper.h"
 class world_state_test : public world_state, public event_listener {
   public:
     world_state_test(std::string assets, std::shared_ptr<world> world_ptr_): 
@@ -17,14 +19,15 @@ class world_state_test : public world_state, public event_listener {
 
     void action_preformed(event e) override { 
       if (e == events::controller_confirm) {
-        auto new_state = new world_state_test("assets/menu_sheet.json", world_ptr);
-        world_ptr->set_state(new_state);
+        //auto new_state = new world_state_test("assets/menu_sheet.json", world_ptr);
+        //world_ptr->set_state(new_state);
       }
     }
      
     std::string get_name() override { return event_listener::name; }
 
     void draw(graphic_renderer * gr, world & w) override { 
+      ptr_helper::chk_null(gr);
       state_view.accept(gr);
     }
 

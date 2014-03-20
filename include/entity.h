@@ -14,7 +14,7 @@ public:
   bool update(int game_time, world & w) { return true; }
   void draw(std::vector<graphic_element> graphics, world & w) { }
   void accept(graphic_element_visitor * v) override {
-    v->visit(this);
+    v->visit(std::shared_ptr<entity>(this));
   }
 };
 #endif

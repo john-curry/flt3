@@ -1,5 +1,6 @@
 #ifndef GRAPHIC_ELEMENT_H
 #define GRAPHIC_ELEMENT_H
+#include <memory>
 class graphic_element_visitor;
 struct graphic_element {
   virtual ~graphic_element() = default;

@@ -15,7 +15,7 @@ std::vector<std::shared_ptr<graphic_element>> assetsheet::get_assets(std::shared
     auto content = root["content"];
     for (auto c = content.begin(); c != content.end(); ++c) {
       std::string id = (*c)["id"].asString();
-      std::cout << "converting id: " << id << std::endl;
+      log::message("converting id: "+ id);
       elements.push_back(converter->make_element(id, *c));
     }
   }

@@ -15,8 +15,11 @@
 #include "selection_element.h"
 #include "dialog_element.h"
 #include "timer.h"
+#include "logger.h"
+#include "helper.h"
 using namespace std;
 int main() {
+  log::message("STARTING GAME ============================");
   if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
     return -1;
   }
@@ -42,19 +45,20 @@ int main() {
 */
  // view v(graphics);   
   //auto gr = new graphic_renderer(screen); 
-  auto gl = new graphic_logger();
+  //auto gl = new graphic_logger();
   world w;
+  log::message("making test world state");
   auto wst = new world_state_test("assets/title_view.json", std::shared_ptr<world>(&w));
-  std::cout << "setting world state" << std::endl;
+  
+  log::message("setting world state");
   w.set_state(wst);
 
   auto gr  = new graphic_renderer(screen);
   auto pool = listener_pool();
   pool.add_listener(wst);
-  timer t(1000);
   SDL_Event e;
   bool running = true;
-  std::cout << "starting gameloop" << std::endl;
+  log::message("starting game loop");
   while (running) {
     while (SDL_PollEvent(&e)) {
       switch (e.type) {
@@ -64,13 +68,15 @@ int main() {
         case SDL_KEYDOWN:
           switch (e.key.keysym.sym) {
             case SDLK_RETURN:
-          //  std::cout << "controller confirm" << std::endl;
+              log::message("controller pressed enter");
               pool.notify(events::controller_confirm);
             break;
             case SDLK_DOWN:
+              log::message("controller pressed down");
               pool.notify(events::controller_down);
             break;
             case SDLK_UP:
+              log::message("controller pressed up");
               pool.notify(events::controller_up);
             break;
             default: break;
@@ -79,10 +85,13 @@ int main() {
         default: break;
       }
     }
-     
+
     SDL_FillRect(screen.get(), NULL, 0x000000);
+    log::message("updating world");
     w.update(100, w);
+    log::message("drawing world");
     w.draw(gr, w);
+    log::message("flipping screen");
     SDL_Flip(screen.get());
     SDL_Delay(100); 
   }
