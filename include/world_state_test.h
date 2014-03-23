@@ -16,7 +16,7 @@ class world_state_test : public world_state, public event_listener {
       event_listener("world_test_state"), 
       world_ptr(world_ptr_), 
       state_view(assetsheet(assets).get_assets()) { }
-
+    // event_listener overrides
     void action_preformed(event e) override { 
       if (e == events::controller_confirm) {
         //auto new_state = new world_state_test("assets/menu_sheet.json", world_ptr);
@@ -25,13 +25,16 @@ class world_state_test : public world_state, public event_listener {
     }
      
     std::string get_name() override { return event_listener::name; }
+    // end event_listener overrides
 
+    // world-state overrides
     void draw(graphic_renderer * gr, world & w) override { 
       ptr_helper::chk_null(gr);
       state_view.accept(gr);
     }
 
     bool update(int game_time, world & w) override { 
+      log::message("notifying listener");
       state_view.accept(logger.get()); 
       return true; 
     }
