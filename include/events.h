@@ -7,5 +7,6 @@ namespace events {
     const event controller_down("down", "controller");
     const event controller_right("right", "controller");
     const event controller_left("left", "controller");
+    const event state_init("init", "state");
 }
 #endif
