@@ -1,6 +1,7 @@
 #include "world.h"
 #include "world_state.h"
 #include "helper.h"
+#include "logger.h"
 void world::draw(graphic_renderer * gr, world & w) {
   ptr_helper::chk_null(state);
   ptr_helper::chk_null(gr);
@@ -17,6 +18,7 @@ bool world::update(int game_time, world & w) {
 void world::set_state(world_state * state_) {
   ptr_helper::chk_null(state_);
   state = state_;
+  log::message("changing state.");
   state_->notify_event_listeners(events::state_init);
 }
 
